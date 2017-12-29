@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.devMode" value="false" />
+	<package name="people" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+			<result name="login">/WEB-INF/jsp/login.jsp</result>
+		</global-results>
+	
+		<!-- 配置首页访问的Action -->
+		<action name="index" class="peopleAction">
+			<result name="index">/WEB-INF/JSP/index.jsp</result>
+		</action>
+		
+		<!-- 对数据进行操作的action,这里的class是spring里面的id-->
+		<action name="people_*" class="peopleAction" method="{1}">
+			<result name="index" type="redirectAction">index.action</result>
+			<result name="toUpdate" >/WEB-INF/JSP/update.jsp</result>
+			<result name="msg" >/WEB-INF/JSP/update.jsp</result>
+			<result name="findOnePage" >/WEB-INF/JSP/find_all.jsp</result>
+		</action>
+	
+		
+		
+		
+	</package>
+</struts>
